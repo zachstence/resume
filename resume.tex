@@ -19,6 +19,8 @@
 \usepackage{tabularx}
 \usepackage{datetime}
 \usepackage{url}
+\usepackage{mdframed}
+\usepackage{multicol}
 \urlstyle{same}
 
 %-----------------------------------------------------------
@@ -33,9 +35,9 @@
 %Margin setup
 
 \setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
 \setlength{\headheight}{0in}
 \setlength{\headsep}{0in}
-\setlength{\oddsidemargin}{-0.25in}
 \setlength{\paperheight}{11in}
 \setlength{\paperwidth}{8.5in}
 \setlength{\tabcolsep}{0in}
@@ -48,38 +50,41 @@
 
 %-----------------------------------------------------------
 %Custom commands
-\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
 
-\newcommand{\resheading}[1]{\vspace{-2pt}
-  \parbox{\textwidth}{\setlength{\FrameSep}{\outerbordwidth}
-    \begin{shaded}
-\setlength{\fboxsep}{0pt}\framebox[\textwidth][l]{\setlength{\fboxsep}{4pt}\fcolorbox{shadecolorB}{shadecolorB}{\textbf{{\mbox{~}\makebox[6.762in][l]{\large #1} \vphantom{p\^{E}}}}}}
-    \end{shaded}
-  }\vspace{-10pt}
+\newcommand{\resheading}[1]{
+    \begin{mdframed}[
+        backgroundcolor=black!15,
+        linewidth=0.75pt,
+        innertopmargin=4pt,
+        innerbottommargin=4pt,
+        skipabove=6pt,
+        skipbelow=2pt]
+        \textbf{\large #1}
+    \end{mdframed}
+}
+
+\newcommand{\dressubheading}[5]{
+    \textbf{#1} \hfill #2 \\[0pt]
+    \textbf{#3} \hfill #4 \\[0pt]
+    \textit{#5} \\[0pt]
 }
 
 \newcommand{\ressubheading}[4]{
-\begin{tabular*}{6.609in}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
-        \textbf{#1} & #2 \\
-        \textit{#3} & #4 \\
-\end{tabular*}\vspace{-6pt}}
+    \textbf{#1} \hfill #2 \\[0pt]
+    \textit{#3} \hfill #4 \\[0pt]
+}
 
-\newcommand{\dressubheading}[5]{
-\begin{tabular*}{6.609in}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
-        \textbf{#1} & #2 \\
-        \textbf{#3} & #4 \\
-%       \textit{#5} \\
-\end{tabular*}\vspace{-6pt}}
+\newenvironment{resitemize}{
+    \vspace{-6pt}
+    \begin{itemize}
+    \setlength\itemsep{-2pt}
+}{
+    \end{itemize}
+}
 
-
-
-
-
-\newcommand{\ressubhead}[2]{
-\begin{tabular*}{6.609in}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
-        \hspace{-14pt}\textbf{#1} & #2 \\
-\end{tabular*}\vspace{-6pt}}
-
+\newcommand{\resdateitem}[2]{
+    \item \textbf{#1} \hfill #2 \\
+}
 %\newcommand{\sep}{\ \footnotesize{\textbullet} \ \normalsize}
 
 \newcommand{\sep}{\ \textbf{|} \ }
@@ -98,6 +103,8 @@
 
 \begin{document}
 
+\begin{NoHyper}
+
 %\begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
 %\textbf{\LARGE Zachary Stence} & \href{mailto:zachstence@gmail.com}{zachstence@gmail.com} \\
 %\href{https://goo.gl/maps/c3qEnAVeE9q}{631 Moore Street} & \href{mailto:zms22@txstate.edu}{zms22@txstate.edu} \\
@@ -114,11 +121,10 @@
 
 
 \textbf{\huge Zachary Stence} \\[2pt]
- \href{https://goo.gl/maps/5kUt8MF8fhMqY8UM9}{1441 Leah Ave, San Marcos, TX 78666} \sep \href{tel:15125072612}{(512) 507-2612} \sep \href{mailto:zms22@txstate.edu}{zms22@txstate.edu} \\
- \href{https://www.linkedin.com/in/zachary-stence}{linkedin.com/in/zachary-stence} \sep  \href{https://www.github.com/zachstence}{github.com/zachstence} \\[6pt]
+\href{https://goo.gl/maps/5kUt8MF8fhMqY8UM9}{1441 Leah Ave, San Marcos, TX 78666} \sep    \href{tel:15125072612}{(512) 507-2612} \sep \href{mailto:zachstence@gmail.com}{zachstence@gmail.com} \\
+\href{https://www.linkedin.com/in/zachary-stence}{linkedin.com/in/zachary-stence} \sep  \href{https://www.github.com/zachstence}{github.com/zachstence} \\[6pt]
 
 \hrule
-
 \vspace{2pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -130,24 +136,47 @@
 %\href{mycatalog.txstate.edu/undergraduate/science-engineering/computer/computer-science-concentration-engineering-bs/}{B.S. in Computer Science} / \href{mycatalog.txstate.edu/undergraduate/science-engineering/mathematics/applied-bs/}{B.S. in Applied Mathematics (in progress)}
 
 
-%\ressubheading{Bachelor of Science in Computer Science: Computer Engineering Concentration\\Bachelor of Science in Applied Mathematics}{San Marcos, Texas}{\href{http://www.txstate.edu}{Texas State University}}{2016 - Present}
+%\resdateiteming{Bachelor of Science in Computer Science: Computer Engineering Concentration\\Bachelor of Science in Applied Mathematics}{San Marcos, Texas}{\href{http://www.txstate.edu}{Texas State University}}{2016 - Present}
 
 \resheading{Education}
-\begin{itemize}
-    \item \dressubheading{\href{http://mycatalog.txstate.edu/undergraduate/science-engineering/computer/computer-science-concentration-engineering-bs/}{Bachelor of Science in Computer Science:    Computer Engineering}}
+    \dressubheading{\href{http://mycatalog.txstate.edu/undergraduate/science-engineering/computer/computer-science-concentration-engineering-bs/}{Bachelor of Science in Computer Science:    Computer Engineering}}
         {San Marcos, TX}
         {\href{http://mycatalog.txstate.edu/undergraduate/science-engineering/mathematics/applied-bs/}{Bachelor of Science in Mathematics}}
         {Aug 2016 - Dec 2019}
-%        {\href{http://www.txstate.edu/}{Texas State University}}
-        
-        % These changes above and below (and changes to the \dressubheading command make it so that the bullet point for education is centered between my majors
-        
-        \vspace{-1pt}
-        \item[] \href{http://www.txstate.edu/}{\textit{Texas State University}}
-            \vspace{-6pt}
-            \begin{itemize}
-                \resitem{GPA: 3.93}
-            \end{itemize}
+        {\href{http://www.txstate.edu/}{Texas State University}}
+        \begin{resitemize}
+            \item GPA: \textbf{3.93}
+            \item Dean's List: All semesters
+            \item Coursework
+            \vspace{-16pt}
+            \begin{multicols}{3}
+                \begin{resitemize}
+                    \item Parallel Programming
+                    \item Operating Systems
+                    \item Software Engineering
+                    \item Computer Architecture
+                    \item Object Oriented Programming
+                \end{resitemize}
+                \columnbreak
+                \begin{resitemize}
+                    \item Data Structures and Algorithms
+                    \item Assembly Language
+                    \item Digital Logic
+                    \item Foundations of CS I and II
+                    \item Discrete Mathematics I and II
+                \end{resitemize}
+                \columnbreak
+                \begin{resitemize}
+                    \item Calculus III
+                    \item Linear Algebra
+                    \item Differential Equations
+                    \item Intro to Prob. and Stats.
+                    \item Modern Algebra
+                    \item Analysis I
+                \end{resitemize}
+            \end{multicols}
+            \vspace{-16pt}
+        \end{resitemize}
 
 %    \item \ressubheading{\href{http://www.lasahighschool.com}{Liberal Arts and Science Academy}}{Austin,     Texas}{High School}{2012 - 2016}
 %        \begin{itemize}
@@ -156,12 +185,69 @@
 %            \resitem{SAT: 2020}
 %            \resitem{ACT: 30}
 %        \end{itemize}
-\end{itemize}
 
 
 
 
 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   SKILLS
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\resheading{Skills}
+%     & \textbf{Software} & \textbf{Programming}\\[2pt]
+    
+    
+    
+%     \textbf{Proficient:}\hspace{24.5pt} & 
+%     \href{https://www.office.com/}{Microsoft Office}, 
+%     \href{http://drive.google.com}{Google Drive},
+%     Typing (90+ WPM)
+%     %\href{http://www.autodesk.com/products/fusion-360/overview}{Fusion 360}
+%     \hspace{50pt} & 
+    
+%     \href{https://en.wikipedia.org/wiki/C\%2B\%2B}{C++},
+%     \href{https://www.latex-project.org/}{\LaTeX},
+%     \href{https://en.wikipedia.org/wiki/Linux}{Linux}\\
+    
+    
+    
+%     \textbf{Working Knowledge:} \hspace{20pt} & 
+%     \href{http://www.solidworks.com}{SolidWorks}, 
+%     \href{http://www.sketchup.com}{SketchUp},
+%     \href{http://www.autodesk.com/products/autocad/overview}{AutoCAD} & 
+    
+%     \href{https://en.wikipedia.org/wiki/Java_(programming_language)}{Java},
+%     \href{https://www.python.org/}{Python},
+% %    \href{https://en.wikipedia.org/wiki/TI-BASIC}{TI-BASIC},
+%     \href{https://en.wikipedia.org/wiki/R_(programming_language)}{R}\\
+    
+
+
+\textbf{Languages:}
+    \href{https://en.wikipedia.org/wiki/C\%2B\%2B}{C++},
+    \href{https://en.wikipedia.org/wiki/C_Sharp_(programming_language)}{C\#},
+    \href{https://en.wikipedia.org/wiki/Java_(programming_language)}{Java},
+    \href{https://www.python.org/}{Python},
+    \href{https://www.latex-project.org/}{\LaTeX},
+    HTML, CSS
+\newline
+\textbf{Software:}
+    Visual Studio,
+    IntelliJ IDEs,
+    Microsoft Office (Word, Excel, Powerpoint)
+\newline
+\textbf{Other:}
+    \href{https://jenkins.io/}{Jenkins CI},
+    Unit testing,
+    Machine learning,
+    Typing (90+ WPM)
 
 
 
@@ -178,25 +264,29 @@
 
 
 \resheading{Experience}
-\begin{itemize}
-    \item \ressubheading{Software Development Intern}{Round Rock, TX}{\href{https://www.emerson.com/en-us/automation-solutions}{Emerson Automation Solutions}}{Summer 2019}
-        \begin{itemize}
-            \item Working with the DevOps team to assist developer productivity and development of Emerson's premier distributed control system software, \href{https://www.emerson.com/en-us/automation/control-and-safety-systems/distributed-control-systems-dcs/deltav-distributed-control-system}{DeltaV}.
-            \item Developed an ASP.NET Core website to host information useful to developers.
-            \item Wrote several programs to automatically collect metrics and information about the DeltaV codebase and publish it on the website in realtime.
-        \end{itemize}
-    \item \ressubheading{Research Assistant}{San Marcos, TX}{Texas State University}{2018 - 2019}
-        \begin{itemize}
-            \item Assist a professor in his research project by exploring new libraries, working with datasets, and using the Weka library to implement a text classification machine learning model to analyze sentiment of tweets.
-        \end{itemize}
-    \item \ressubheading{Undergraduate Researcher}{Dayton, OH}{Wright State University}{Summer 2018}
-        \begin{itemize}
-            \item Researched the viability of using accelerometers on wearable devices to authenticate users because of the increased pervasiveness and lack of effective security techniques on wearables. Learned how to do research and how to interact with professionals in academia.
-        \end{itemize} 
-    \item \ressubheading{Undergraduate Instructional Assistant}{San Marcos, TX}{\href{https://cs.txstate.edu/accounts/lab_assistants/}{Texas State University Department of Computer Science}}{2017 - Present}
-        \begin{itemize}
-            \item Work in various computer labs on campus 10 hours each week to help students use computers and printers, as well as tutor students on computer science courses.
-        \end{itemize}
+\ressubheading{Software Development Intern}{Round Rock, TX}{\href{https://www.emerson.com/en-us/automation-solutions}{Emerson Automation Solutions}}{Jun 2019 - Aug 2019}
+    \begin{resitemize}
+        \item Worked with the DevOps team to enhance developer productivity and development of Emerson's premier distributed control system software, DeltaV.
+        \item Developed an ASP.NET Core website to host information useful to developers.
+        \item Created several programs using Visual Studio 2019 to automatically collect metrics and information about the DeltaV codebase and publish it to a SQL database.
+        \item Participated in daily standups, sprint retrospectives, sprint plannings, and all other team meetings.
+        \item Presented my work at the end of my internship to all Emerson technology  employees.
+    \end{resitemize}
+\ressubheading{Research Assistant}{San Marcos, TX}{Texas State University Department of Computer Science}{Nov 2018 - May 2019}
+    \begin{resitemize}
+        \item Assisted Dr. Vangelis Metsis in his research project sponsored by \textbf{\textit{[NAME OF COMPANY]}}. Used the Weka library to implement a text classification machine learning model to analyze sentiment of tweets.
+        \item Achieved reliable classification of tweets in both English and Italian.
+    \end{resitemize}
+\ressubheading{Undergraduate Researcher}{Dayton, OH}{Wright State University}{May 2018 - July 2018}
+    \begin{resitemize}
+        \item Worked with a teammate to research the viability of using accelerometers on wearable devices to authenticate the user. Achieved reliable classification of same- vs. different-user according to the user's walking pattern.
+        \item Implemented a machine learning model and the necessary data pre-processing in Python to classify a stream of data from an accelerometer.
+        \item Presented my research to several professors from Wright State University.
+    \end{resitemize} 
+\ressubheading{Undergraduate Instructional Assistant}{San Marcos, TX}{\href{https://cs.txstate.edu/accounts/lab_assistants/}{Texas State University Department of Computer Science}}{2017 - Present}
+    \begin{resitemize}
+        \item Work in various computer labs on campus 17 hours each week to help students use computers and printers, as well as tutor students in computer science courses.
+    \end{resitemize}
     % \item \ressubheading{Tutor}{San Marcos, TX}{\href{http://hlsamp.cose.txstate.edu/clc/clc-tutoring.html}{Collaborative Learning Center}}{2017 - Present}
     %     \begin{itemize}
     %         \item Tutor Texas State students on both basic and advanced STEM classes for 2 hours each week.
@@ -225,94 +315,8 @@
 
 
 
-\end{itemize}
 
 
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   SKILLS AND COURSEWORK
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\resheading{Skills and Coursework}\\
-\vspace{8pt}
-% \begin{tabularx}{\textwidth}{rlX}
-%     & \textbf{Software} & \textbf{Programming}\\[2pt]
-    
-    
-    
-%     \textbf{Proficient:}\hspace{24.5pt} & 
-%     \href{https://www.office.com/}{Microsoft Office}, 
-%     \href{http://drive.google.com}{Google Drive},
-%     Typing (90+ WPM)
-%     %\href{http://www.autodesk.com/products/fusion-360/overview}{Fusion 360}
-%     \hspace{50pt} & 
-    
-%     \href{https://en.wikipedia.org/wiki/C\%2B\%2B}{C++},
-%     \href{https://www.latex-project.org/}{\LaTeX},
-%     \href{https://en.wikipedia.org/wiki/Linux}{Linux}\\
-    
-    
-    
-%     \textbf{Working Knowledge:} \hspace{20pt} & 
-%     \href{http://www.solidworks.com}{SolidWorks}, 
-%     \href{http://www.sketchup.com}{SketchUp},
-%     \href{http://www.autodesk.com/products/autocad/overview}{AutoCAD} & 
-    
-%     \href{https://en.wikipedia.org/wiki/Java_(programming_language)}{Java},
-%     \href{https://www.python.org/}{Python},
-% %    \href{https://en.wikipedia.org/wiki/TI-BASIC}{TI-BASIC},
-%     \href{https://en.wikipedia.org/wiki/R_(programming_language)}{R}\\
-    
-% \end{tabularx}
-\setlength{\tabcolsep}{16pt}
-
-\begin{tabularx}{\textwidth}{p{0.20\textwidth}p{0.68\textwidth}}
-    \textbf{Skills} & \textbf{Coursework}\\
-        
-        \href{https://en.wikipedia.org/wiki/C_Sharp_(programming_language)}{C\#},
-        \href{https://jenkins.io/}{Jenkins CI},
-        \newline
-        Unit testing,
-        \href{https://www.python.org/}{Python},
-        \href{https://en.wikipedia.org/wiki/Java_(programming_language)}{Java},
-        \href{https://en.wikipedia.org/wiki/C\%2B\%2B}{C++},
-        Machine learning,
-        \href{https://www.latex-project.org/}{\LaTeX},
-        % \href{http://www.uml.org/}{UML Diagrams},
-        % \href{https://www.office.com/}{Microsoft Office},
-        % \href{http://drive.google.com}{Google Drive},
-        \newline Typing (90+ WPM)
-        
-        &
-        Operating Systems,
-        Software Engineering,
-        Software Engineering Project,
-        Computer Architecture,
-        Object Oriented Des. and Prog.,
-        Data Structures and Algorithms,
-        Assembly Language,
-        Digital Logic,
-        Foundations of CS I and II,
-        Discrete Mathematics I and II,
-        Intro to Prob. and Stats.,
-        Analysis I,
-        Linear Algebra,
-        Calculus III,
-        Differential Equations,
-        Introduction to Advanced Mathematics,
-        Modern Algebra
-        
-\end{tabularx}
-
-\setlength{\tabcolsep}{16pt}
-
-\vspace{-8pt}
 
 
 
@@ -386,18 +390,15 @@
 
 
 \resheading{Honors, Awards, and Activities}
-\begin{itemize}
-    \item \ressubhead{\href{https://www.facebook.com/TXST.IEEE/}{Texas State IEEE-CS, student chapter, Vice President}}{2018 - Present}
-    \item \ressubhead{\href{http://www.math.txstate.edu/about/archive/2017-18/awards-day.html}{Undergraduate Recognition for Academic Excellence}}{2018}
-%    \item \ressubhead{\href{https://www.linkedin.com/in/zachary-stence/}{Certificate of Achievement}}{2018}
-    \item \ressubhead{Phi Kappa Phi Honor Society, member}{2018 - Present}
-    \item \ressubhead{\href{https://ims.alphachihonor.org/}{Alpha Chi National College Honor Society, member}}{2018 - Present}
-    \item \ressubhead{\href{http://hlsamp.cose.txstate.edu/}{NSF LSAMP Scholars Program, member}}{2017 - Present}
-    \item \ressubhead{\href{http://mycatalog.txstate.edu/undergraduate/general-information/academic-policies/honors/}{Texas State University Dean's List}}{Fall '16 - Spring '19}
-    \item \ressubhead{\href{http://www.finaid.txstate.edu/scholarships/freshman/assured.html}{Texas State Achievement Scholarship}}{2016 - Present}
-    \item \ressubhead{\href{http://www.txstate.edu/honors/}{Texas State Honors College, member}}{2016 - Present}
-    \item \ressubhead{\href{http://www.campusrecreation.txstate.edu/sport-clubs/club-pages/Ultimate-Disc.html}{Texas State Men's Ultimate Disc}}{2016 - Present}
-    
+\begin{resitemize}
+    \resdateitem{\href{http://hlsamp.cose.txstate.edu/}{NSF LSAMP Scholars Program, member}}{Aug 2017 - Present}
+    \resdateitem{Phi Kappa Phi Honor Society, member}{Aug 2018 - Present}
+    \resdateitem{\href{https://ims.alphachihonor.org/}{Alpha Chi National College Honor Society, member}}{Aug 2018 - Present}
+    \resdateitem{\href{https://www.facebook.com/TXST.IEEE/}{Texas State IEEE-CS, student chapter, Vice President}}{Aug 2018 - May 2018}
+    \resdateitem{\href{http://www.txstate.edu/honors/}{Texas State Honors College, member}}{Aug 2016 - Present}
+    \resdateitem{\href{http://www.math.txstate.edu/about/archive/2017-18/awards-day.html}{Undergraduate Recognition for Academic Excellence}}{Fall 2018}
+    \resdateitem{\href{http://www.finaid.txstate.edu/scholarships/freshman/assured.html}{Texas State Achievement Scholarship}}{Aug 2016 - Present}
+    \resdateitem{\href{http://www.campusrecreation.txstate.edu/sport-clubs/club-pages/Ultimate-Disc.html}{Texas State Men's Ultimate Disc}}{Aug 2016 - Present}
 %\item \ressubhead{\href{http://www.reslife.txstate.edu/llc/Current/STEMLLC.html}{STEM Living-Learning Community, member}}{2016 - 2017}
     
 %\item \ressubhead{\href{https://professionals.collegeboard.org/k-12/awards/ap-scholar}{AP Scholar with Distinction}}{2015 - 2016}
@@ -433,12 +434,12 @@
 %           \resitem{Honors Wind Ensemble \hfill 2015}
 %           \resitem{Symphonic Band I, Principal Tuba \hfill 2014}
 %        \end{itemize}
-\end{itemize}
+\end{resitemize}
 
 
 
 
 
-
+\end{NoHyper}
 
 \end{document}
