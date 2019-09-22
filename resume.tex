@@ -10,7 +10,7 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{mdframed}
-\usepackage{multicol}
+\usepackage{vwcol}
 \usepackage[
 	paperheight=11in,
 	paperwidth=8.5in
@@ -31,10 +31,10 @@
 \newgeometry{
 	paperheight=11in,
 	paperwidth=8.5in,
-	left=0.75in,
-	right=0.75in,
-	top=0.75in,
-	bottom=0.75in
+	left=0.5in,
+	right=0.5in,
+	top=0.5in,
+	bottom=0.5in
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,56 +119,18 @@
 
 \dressubheading
 	{\href{http://mycatalog.txstate.edu/undergraduate/science-engineering/computer/computer-science-concentration-engineering-bs/}{Bachelor of Science in Computer Science (Computer Engineering)}}
-    {Aug 2016--Dec 2019}
+%    {Aug 2016--Dec 2019}
+	{Anticipated Graduation: \textbf{Dec 2019}}
 	{\href{http://mycatalog.txstate.edu/undergraduate/science-engineering/mathematics/applied-bs/}{Bachelor of Science in Applied Mathematics}}
     {San Marcos, TX}
     {\href{http://www.txstate.edu/}{Texas State University}}
-    \begin{resitemize}
-        \item GPA: \textbf{3.93}
-        \item Dean's List: All semesters
-%       \item Coursework
-%       \vspace{-16pt}
-%       \begin{multicols}{3}
-%           \begin{resitemize}
-%               \item Parallel Programming
-%               \item Operating Systems
-%               \item Software Engineering
-%               \item Computer Architecture
-%               \item Object Oriented Programming
-%           \end{resitemize}
-%           \columnbreak
-%           \begin{res     \item Coursework
-%            \vspace{-16pt}
-%            \begin{multicols}{3}
-%                \begin{resitemize}
-%                    \item Parallel Programming
-%                    \item Operating Systems
-%                    \item Software Engineering
-%                    \item Computer Architecture
-%                    \item Object Oriented Programming
-%                \end{resitemize}
-%                \columnbreak
-%                \begin{resitemize}
-%                    \item Data Structures and Algorithms
-%        itemize}
-%               \item Data Structures and Algorithms
-%               \item Assembly Language
-%               \item Digital Logic
-%               \item Foundations of CS I and II
-%               \item Discrete Mathematics I and II
-%           \end{resitemize}
-%           \columnbreak
-%           \begin{resitemize}
-%               \item Calculus III
-%               \item Linear Algebra
-%               \item Differential Equations
-%               \item Intro to Prob. and Stats.
-%               \item Modern Algebra
-%               \item Analysis I
-%           \end{resitemize}
-%       \end{multicols}
-%       \vspace{-16pt}
-    \end{resitemize}
+    	\begin{resitemize}
+    		\item GPA: \textbf{3.93}
+    		\item Dean's List: All semesters
+    		\item Coursework: Data Structures and Algorithms, Object Oriented Programming, Computer Architecture, Operating Systems, Software Engineering, Parallel Programming
+    	\end{resitemize}
+
+
 
 %    \item \ressubheading{\href{http://www.lasahighschool.com}{Liberal Arts and Science Academy}}{Austin,     Texas}{High School}{2012 - 2016}
 %        \begin{itemize}
@@ -187,25 +149,26 @@
 \resheading{Skills}
 
 \textbf{Languages:}
-    \href{https://en.wikipedia.org/wiki/C\%2B\%2B}{C++},
+    \href{https://en.wikipedia.org/wiki/Java_(programming_language)}{Java},    
     \href{https://en.wikipedia.org/wiki/C_Sharp_(programming_language)}{C\#},
-    \href{https://en.wikipedia.org/wiki/Java_(programming_language)}{Java},
+    \href{https://en.wikipedia.org/wiki/C\%2B\%2B}{C++},
     \href{https://www.python.org/}{Python},
     PowerShell,
     HTML, CSS, TypeScript/JavaScript,
     \href{https://www.latex-project.org/}{\LaTeX}
 
 \textbf{Software:}
-    Visual Studio,
+    Visual Studio/VS Code,
     IntelliJ IDEs,
-    Microsoft Office (Word, Excel, Powerpoint),
-    Linux
+    Linux,
+    Microsoft Office (Word, Excel, Powerpoint)
+
 
 \textbf{Other:}
     Unit testing,
     Version control (Git),
-    \href{https://jenkins.io/}{Jenkins CI},
     Machine learning,
+    \href{https://jenkins.io/}{Jenkins CI},
     Typing (90+ WPM)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -217,14 +180,24 @@
 \resheading{Experience}
 
 \ressubheading
+	{Undergraduate Instructional Assistant}
+	{Aug 2017--Present}
+	{\href{https://cs.txstate.edu/accounts/lab_assistants/}{Texas State University Department of Computer Science}}
+	{San Marcos, TX}
+	\begin{resitemize}
+		\item Assist students using computers and printers in various computer labs on campus 17 hours each week.
+		\item Tutor students in computer science courses occasionally.
+	\end{resitemize}
+
+\ressubheading
 	{Software Development Intern}
 	{Jun 2019--Aug 2019}
 	{\href{https://www.emerson.com/en-us/automation-solutions}{Emerson Automation Solutions}}
 	{Round Rock, TX}
     \begin{resitemize}
-        \item Worked on the DevOps team to enhance developer productivity and support development of Emerson's premier distributed control system software, DeltaV.
-        \item Created several thoroughly unit tested programs using Visual Studio 2019 to automatically collect metrics and information about the DeltaV codebase and publish them to a SQL database.
-        \item Developed a thoroughly unit tested ASP.NET Core website to host information from a SQL database.
+        \item Worked on the \textbf{DevOps} team to enhance developer productivity and support development of Emerson's premier distributed control system software, DeltaV.
+        \item Created several thoroughly unit tested \textbf{C\#} programs using Visual Studio 2019 to automatically collect metrics and information about the DeltaV codebase and publish them to a \textbf{SQL} database.
+        \item Developed a thoroughly unit tested \textbf{ASP.NET Core} website to host information from a SQL database.
         \item Participated in daily stand-ups, sprint plannings, sprint retrospectives, and all other team meetings.
         \item Presented my work at the end of my internship to all Emerson technology  employees.
     \end{resitemize}
@@ -236,7 +209,7 @@
 	{San Marcos, TX}
     \begin{resitemize}
     	\item Worked under Dr. Vangelis Metsis to implement a text classification model that analyzed sentiment in tweets.
-    	\item Wrote quality Java code that could be quickly adapted corresponding to our sponsor company's requirements.
+    	\item Wrote quality \textbf{Java} code that could be quickly adapted corresponding to our sponsor company's requirements.
         \item Achieved reliable classification of tweets in both English and Italian.
     \end{resitemize}
 
@@ -247,19 +220,9 @@
 	{Dayton, OH}
     \begin{resitemize}
         \item Researched the viability of using wearable devices as a means of user authentication with a teammate.
-        \item Implemented a machine learning model in Python to classify a stream of data from an accelerometer.
+        \item Implemented a \textbf{machine learning} model in \textbf{Python} to classify a stream of data from an accelerometer.
         \item Achieved reliable classification of same-user vs. different-user according to walking pattern.
         \item Presented my research to other REU students and several professors from Wright State University.
-    \end{resitemize}
-
-\ressubheading
-	{Undergraduate Instructional Assistant}
-	{Aug 2017--Present}
-	{\href{https://cs.txstate.edu/accounts/lab_assistants/}{Texas State University Department of Computer Science}}
-	{San Marcos, TX}
-    \begin{resitemize}
-        \item Assist students using computers and printers in various computer labs on campus 17 hours each week.
-        \item Tutor students in computer science courses occasionally.
     \end{resitemize}
 
 % \item \ressubheading{Tutor}{San Marcos, TX}{\href{http://hlsamp.cose.txstate.edu/clc/clc-tutoring.html}{Collaborative Learning Center}}{2017 - Present}
