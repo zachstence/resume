@@ -1,0 +1,55 @@
+\documentclass{article}
+
+\usepackage{calc}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{multicol}
+
+\usepackage{blindtext}
+
+% Editable variables
+\def \myMargin{1cm}
+\def \columnRatio{0.35}
+
+\definecolor{aboutBackground}{HTML}{CAD6DE}
+\definecolor{experienceBackground}{HTML}{FFFFFF}
+
+% Computed variables
+\def \aboutWidth{\columnRatio\paperwidth - \myMargin - \myMargin}
+\def \experienceWidth{\paperwidth - \aboutWidth}
+
+% Make page empty, no header/footer/page numbers
+\pagestyle{empty}
+
+% No gap at top of page
+\setlength{\topskip}{0pt}
+
+\hbadness=99999
+
+% Set up page size and margins
+\geometry{letterpaper, portrait, margin=0in}
+
+\begin{document}
+
+\setlength{\fboxsep}{0pt}
+
+\colorbox{aboutBackground}{%
+    \hspace{\myMargin}%
+    \begin{minipage}[t][\paperheight][t]{\aboutWidth}%
+        \raggedright%
+        \vspace{\myMargin}%
+        \input{about.tex}%
+    \end{minipage}%
+    \hspace{\myMargin}%
+}%
+\colorbox{experienceBackground}{%
+    \hspace{\myMargin}%
+    \begin{minipage}[t][\paperheight][t]{\experienceWidth}%
+        \raggedright%
+        \vspace{\myMargin}%
+        \input{experience.tex}%
+    \end{minipage}%
+    \hspace{\myMargin}%
+}
+
+\end{document}
